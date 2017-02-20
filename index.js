@@ -97,7 +97,12 @@ module.exports = function create (opts) {
       }
 
       menubar.window.on('close', windowClear)
-      menubar.window.loadURL(opts.index)
+      
+      if (opts.loadURLOptions) {
+        menubar.window.loadURL(opts.index,opts.loadURLOptions)
+      }else{
+        menubar.window.loadURL(opts.index)
+      }
       menubar.emit('after-create-window')
     }
 
